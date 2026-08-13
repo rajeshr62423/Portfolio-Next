@@ -63,72 +63,88 @@ export default function Projects() {
                 </span>
               </div>
             </div>
-            <div className="proj-viz" aria-hidden="true">
+            <div className="proj-viz">
               <svg
-                viewBox="0 0 320 260"
+                viewBox="0 0 320 320"
                 width="100%"
                 role="img"
-                aria-label="Module graph of the ERP platform"
+                aria-label="Diagram of ERP modules connected to a central core"
               >
-                <line className="spoke" x1="160" y1="130" x2="160" y2="40" />
-                <line className="spoke" x1="160" y1="130" x2="260" y2="90" />
-                <line className="spoke" x1="160" y1="130" x2="260" y2="180" />
-                <line className="spoke" x1="160" y1="130" x2="160" y2="222" />
-                <line className="spoke" x1="160" y1="130" x2="60" y2="180" />
-                <line className="spoke" x1="160" y1="130" x2="60" y2="90" />
+                <g className="spoke-group">
+                  <line className="spoke" x1="160" y1="160" x2="160" y2="46" />
+                  <line className="spoke" x1="160" y1="160" x2="258" y2="103" />
+                  <line className="spoke" x1="160" y1="160" x2="258" y2="217" />
+                  <line className="spoke" x1="160" y1="160" x2="160" y2="274" />
+                  <line className="spoke" x1="160" y1="160" x2="62" y2="217" />
+                  <line className="spoke" x1="160" y1="160" x2="62" y2="103" />
+                  <line className="spoke" x1="160" y1="160" x2="42" y2="160" />
+                  <line className="spoke" x1="160" y1="160" x2="268" y2="160" />
+                </g>
 
                 <g className="mod">
-                  <rect x="118" y="14" width="84" height="26" rx="7" />
-                  <text x="160" y="31" textAnchor="middle">
+                  <circle className="mod-core" cx="160" cy="160" r="34" />
+                  <text className="mod-core-text" x="160" y="158" textAnchor="middle">
+                    ERP
+                  </text>
+                  <text
+                    className="mod-core-text"
+                    x="160"
+                    y="170"
+                    textAnchor="middle"
+                    style={{ fontSize: 9 }}
+                  >
+                    core
+                  </text>
+                </g>
+
+                <g className="mod">
+                  <rect x="126" y="30" width="68" height="26" rx="6" />
+                  <text x="160" y="47" textAnchor="middle">
                     CRM
                   </text>
                 </g>
                 <g className="mod">
-                  <rect x="222" y="77" width="84" height="26" rx="7" />
-                  <text x="264" y="94" textAnchor="middle">
+                  <rect x="224" y="90" width="76" height="26" rx="6" />
+                  <text x="262" y="107" textAnchor="middle">
                     Sales
                   </text>
                 </g>
                 <g className="mod">
-                  <rect x="222" y="167" width="84" height="26" rx="7" />
-                  <text x="264" y="184" textAnchor="middle">
-                    Finance
-                  </text>
-                </g>
-                <g className="mod">
-                  <rect x="118" y="209" width="84" height="26" rx="7" />
-                  <text x="160" y="226" textAnchor="middle">
-                    Inventory
-                  </text>
-                </g>
-                <g className="mod">
-                  <rect x="14" y="167" width="84" height="26" rx="7" />
-                  <text x="56" y="184" textAnchor="middle">
+                  <rect x="222" y="204" width="86" height="26" rx="6" />
+                  <text x="265" y="221" textAnchor="middle">
                     Service
                   </text>
                 </g>
                 <g className="mod">
-                  <rect x="14" y="77" width="84" height="26" rx="7" />
-                  <text x="56" y="94" textAnchor="middle">
+                  <rect x="112" y="278" width="96" height="26" rx="6" />
+                  <text x="160" y="295" textAnchor="middle">
+                    Inventory
+                  </text>
+                </g>
+                <g className="mod">
+                  <rect x="8" y="204" width="96" height="26" rx="6" />
+                  <text x="56" y="221" textAnchor="middle">
+                    Finance
+                  </text>
+                </g>
+                <g className="mod">
+                  <rect x="4" y="90" width="104" height="26" rx="6" />
+                  <text x="56" y="107" textAnchor="middle">
+                    Procurement
+                  </text>
+                </g>
+                <g className="mod">
+                  <rect x="0" y="147" width="40" height="26" rx="6" />
+                  <text x="20" y="164" textAnchor="middle" style={{ fontSize: 9 }}>
+                    Gate
+                  </text>
+                </g>
+                <g className="mod">
+                  <rect x="220" y="147" width="96" height="26" rx="6" />
+                  <text x="268" y="164" textAnchor="middle">
                     Production
                   </text>
                 </g>
-
-                <circle
-                  className="mod-core"
-                  cx="160"
-                  cy="130"
-                  r="34"
-                  strokeWidth="1.5"
-                />
-                <text
-                  className="mod-core-text"
-                  x="160"
-                  y="135"
-                  textAnchor="middle"
-                >
-                  ERP Core
-                </text>
               </svg>
             </div>
           </div>
