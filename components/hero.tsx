@@ -16,7 +16,7 @@ export default function Hero() {
           </h1>
           <p className="lede">
             Two years building <strong>ERP-scale products</strong> with React,
-            React Native, Node.js and MongoDB — the kind with dozens of
+            React Native, Nest.js and MongoDB — the kind with dozens of
             interconnected modules and real users depending on them.
           </p>
           <div className="status-line mono">
