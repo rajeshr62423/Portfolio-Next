@@ -15,15 +15,16 @@ export default function About() {
               I build scalable, user-centric applications across web and mobile.
               On the front end that&apos;s{" "}
               <strong>React.js, Next.js and React Native</strong>; on the back
-              end, <strong>Node.js, Express, NestJS and MongoDB</strong> — with
-              Redux and Redux-Saga taming the complex, asynchronous data flows
-              that large products tend to grow.
+              end, <strong>NestJS, Node.js and Express</strong> — with{" "}
+              <strong>Prisma/PostgreSQL and MongoDB</strong> for schema design
+              and data modeling, and Redux/Redux-Saga taming the complex,
+              asynchronous data flows that large products tend to grow.
             </p>
             <p>
-              Most of my day-to-day is spent making interfaces that stay{" "}
-              <strong>consistent and responsive</strong> across many screens and
-              clients, integrating REST APIs cleanly, and delivering features
-              through the full Agile sprint cycle.
+              Most of my day-to-day is spent turning business workflows into
+              normalized data models and production-ready modules — spanning
+              schema design, REST API development, and release — plus
+              independent projects exploring self-hosted LLM integration.
             </p>
           </div>
           <div className="facts reveal" data-parallax="0.55">
@@ -33,7 +34,7 @@ export default function About() {
             </div>
             <div className="fact">
               <span className="k">focus</span>
-              <span className="v">MERN · Mobile</span>
+              <span className="v">NestJS · React · Prisma</span>
             </div>
             <div className="fact">
               <span className="k">based</span>

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Rajesh R — Full Stack Developer (MERN)";
+export const alt = "Rajesh R — Full Stack Developer (NestJS + React)";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -51,7 +51,9 @@ export default async function OpengraphImage() {
           }}
         >
           Full Stack Developer&nbsp;
-          <span style={{ color: "#5FE6C0", display: "flex" }}>(MERN)</span>
+          <span style={{ color: "#5FE6C0", display: "flex" }}>
+            (NestJS + React)
+          </span>
         </div>
         <div
           style={{
@@ -62,8 +64,8 @@ export default async function OpengraphImage() {
             display: "flex",
           }}
         >
-          Building ERP-scale web &amp; mobile apps with React, React Native,
-          Node.js and MongoDB.
+          Building ERP systems &amp; integrations with NestJS, React, Next.js
+          and Prisma/PostgreSQL.
         </div>
         <div
           style={{

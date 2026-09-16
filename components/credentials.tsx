@@ -41,14 +41,6 @@ const EDUCATION = [
     title: "B.E. Computer Science",
     meta: "M.R.K Institute of Technology, Cuddalore · Nov 2020 — Jun 2024",
   },
-  {
-    title: "HSC · Higher Secondary — 70.3%",
-    meta: "DBTR National Higher Secondary School, Mayiladuthurai",
-  },
-  {
-    title: "SSLC — 82.6%",
-    meta: "DBTR National Higher Secondary School, Mayiladuthurai",
-  },
 ];
 
 const CERTIFICATIONS = [

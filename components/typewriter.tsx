@@ -3,12 +3,16 @@
 import { useEffect, useState } from "react";
 
 const DEFAULT_WORDS = [
-  "Full Stack Developer (MERN)",
-  "React · React Native · Node.js",
-  "Building ERP-scale web & mobile apps",
+  "Full Stack Developer — NestJS + React",
+  "React Native Developer — Android & iOS",
+  "Building ERP systems & integrations", 
 ];
 
-export default function Typewriter({ words = DEFAULT_WORDS }: { words?: string[] }) {
+export default function Typewriter({
+  words = DEFAULT_WORDS,
+}: {
+  words?: string[];
+}) {
   const [text, setText] = useState("");
 
   useEffect(() => {

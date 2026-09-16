@@ -1,15 +1,31 @@
 const MINI_PROJECTS = [
   {
-    title: "Realtime Chat App",
+    title: "Voltiva",
     description:
-      "A live one-to-one and group messaging app where messages arrive the moment they're sent.",
-    stack: ["React JS", "Node.js", "Socket.IO", "MongoDB"],
+      "Smarter EV charging management — manage EV charging stations, customers, payments and operations, all in one platform.",
+    stack: ["NestJS", "PostgreSQL", "Next.js", "Prisma ORM", "Razorpay", "Brevo"],
+    link: "https://voltiva-frontend.vercel.app/",
   },
   {
-    title: "Moi Book",
+    title: "Seyora",
     description:
-      "A digital ledger for managing moi — the monetary gifts recorded at Tamil functions like weddings. Log each contributor and amount, track running totals, and keep a clear record for reciprocation at future events.",
-    stack: ["React Native", "Redux", "MongoDB", "NestJS"],
+      "A workspace application for engineering teams to plan, track, and deliver work, with a NestJS API covering projects, tasks, and team assignment. The relational schema in Prisma is modeled around a role-based workspace structure, enforcing access boundaries at the data layer.",
+    stack: ["Next.js", "React Native", "NestJS", "Prisma", "PostgreSQL"],
+    link: "https://seyora-app.vercel.app/",
+  },
+  {
+    title: "JARVIS",
+    description:
+      "A personal AI operating system that layers a conversational assistant over the user's own data and day-to-day tasks, integrating self-hosted language models through the Ollama API behind session-based authentication.",
+    stack: ["Next.js", "React Native", "NestJS", "Prisma", "PostgreSQL", "Ollama"],
+    link: "https://jarvis-omega-ai.vercel.app/",
+  },
+  {
+    title: "DigiMoiBook",
+    description:
+      "Digitized the handwritten moi notebook kept at weddings and family functions into a web app for recording guests, gifts, and contributions — structured so they stay queryable per event and per guest.",
+    stack: ["Next.js", "React Native", "TypeScript", "MongoDB"],
+    link: "https://digimoibook-app.vercel.app/",
   },
 ];
 
@@ -28,7 +44,7 @@ export default function Projects() {
           <div className="proj-grid">
             <div className="proj-body">
               <div className="proj-tag mono">FEATURED · ERP PLATFORM</div>
-              <h3>ERP Platform · Gway Tech Solutions</h3>
+              <h3>GwayERP · Gway Tech Solutions</h3>
               <p>
                 A modular, customizable ERP for managing end-to-end business
                 operations — one unified platform, many interconnected modules.
@@ -166,6 +182,14 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
+              <a
+                className="proj-mini-link mono"
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live ↗
+              </a>
             </div>
           ))}
         </div>

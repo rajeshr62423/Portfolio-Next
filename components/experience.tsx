@@ -19,45 +19,25 @@ export default function Experience() {
             <div className="job-loc">Chennai, India</div>
             <ul>
               <li>
-                Develop and maintain cross-platform mobile and web apps with
-                React Native, React.js and Next.js.
+                Own module-level delivery within GwayERP, a custom ERP
+                platform on React/Vite, NestJS, and MongoDB, serving several
+                client implementations running in parallel.
               </li>
               <li>
-                Implement advanced state management with Redux and Redux-Saga
-                for complex asynchronous data flows.
+                Translate client business workflows into normalized data
+                models and module specifications, then carry them through to
+                production across both frontend and backend.
               </li>
               <li>
-                Build reusable, responsive UI components with MUI, Ant Design
-                and Tailwind CSS.
+                Modeled the Dispatch Management inventory flow around a
+                parent request record with allocation lines, enabling
+                partial fulfillment and accurate stock tracking across
+                multi-stage dispatches.
               </li>
               <li>
-                Integrate RESTful APIs and collaborate with cross-functional
-                teams in Agile sprints via Jira.
-              </li>
-            </ul>
-          </div>
-
-          <div className="job dim reveal" data-parallax="0.5">
-            <div className="job-top">
-              <div className="job-role">
-                Front-End Developer Intern ·{" "}
-                <span className="job-co">Gway Tech Solutions</span>
-              </div>
-              <div className="job-when">Jun 2024 — Oct 2024</div>
-            </div>
-            <div className="job-loc">Chennai, India</div>
-            <ul>
-              <li>
-                Built responsive mobile and web interfaces with React Native and
-                React.js.
-              </li>
-              <li>
-                Implemented form handling and validation using Formik and React
-                Hook Form.
-              </li>
-              <li>
-                Applied version control (Git), project architecture and API
-                handling in a production codebase.
+                Integrate third-party REST APIs into core modules, handling
+                authentication, data mapping, and error states so downstream
+                workflows stay reliable.
               </li>
             </ul>
           </div>
