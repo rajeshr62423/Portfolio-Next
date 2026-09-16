@@ -9,6 +9,7 @@ import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import ScrollEffects from "@/components/scroll-effects";
 import { ResumeModalProvider } from "@/components/resume-modal";
+import StarkBot from "@/components/stark-bot";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <StarkBot />
     </ResumeModalProvider>
   );
 }

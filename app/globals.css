@@ -1409,3 +1409,155 @@ html.theme-anim * {
     --parallax-speed: 0.3;
   }
 }
+
+/* ---------- StarkAI floating bot ---------- */
+.stark-bot {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--ink-2), var(--ink));
+  border: 1px solid var(--line-2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition:
+    width 0.3s ease,
+    border-radius 0.3s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+  opacity: 0;
+  transform: translate3d(220px, 260px, 0) scale(0.15) rotate(-25deg);
+  animation:
+    bot-fly-in 1.15s cubic-bezier(0.2, 0.8, 0.25, 1) 0.5s forwards,
+    bot-idle 3.6s ease-in-out 1.75s infinite;
+}
+.stark-bot:hover {
+  border-color: var(--mint);
+  transform: translateY(-4px);
+}
+.stark-bot-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--mint);
+  opacity: 0;
+  animation: bot-ring 2.6s ease-out 1.7s infinite;
+}
+.stark-bot-svg {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+.sb-antenna,
+.sb-arm {
+  stroke: var(--faint);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.sb-antenna-tip {
+  fill: var(--coral);
+}
+.sb-head {
+  fill: var(--panel);
+  stroke: var(--mint);
+  stroke-width: 2;
+}
+.sb-eye {
+  fill: var(--mint);
+}
+.sb-body {
+  fill: var(--panel);
+  stroke: var(--line-2);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.stark-bot-label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 12.5px;
+  color: var(--text);
+  opacity: 0;
+  transition:
+    max-width 0.3s ease,
+    opacity 0.2s ease;
+}
+.stark-bot:hover .stark-bot-label {
+  max-width: 160px;
+  opacity: 1;
+  margin-right: 6px;
+}
+.stark-bot:hover {
+  width: auto;
+  border-radius: 30px;
+  padding-left: 14px;
+}
+.stark-bot:hover .stark-bot-svg {
+  margin: 0;
+}
+
+@keyframes bot-fly-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(220px, 260px, 0) scale(0.15) rotate(-25deg);
+    filter: blur(6px);
+  }
+  55% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  72% {
+    transform: translate3d(-8px, -8px, 0) scale(1.08) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+@keyframes bot-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+@keyframes bot-idle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@media (max-width: 640px) {
+  .stark-bot {
+    right: 16px;
+    bottom: 16px;
+    width: 50px;
+    height: 50px;
+  }
+  .stark-bot-svg {
+    width: 26px;
+    height: 26px;
+  }
+  .stark-bot:hover .stark-bot-label {
+    max-width: 130px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stark-bot {
+    opacity: 1;
+    transform: none;
+  }
+}
