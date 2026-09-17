@@ -87,14 +87,14 @@ export const CATEGORIES: SkillCategory[] = [
     chips: [
       chip("NestJS", SiNestjs, "#E0234E"),
       chip("Node.js", SiNodedotjs, "#339933"),
-      chip("Express.js", SiExpress),
+      chip("Express.js", SiExpress, "#000000"),
     ],
   },
   {
     title: "Database & UI",
     chips: [
       chip("PostgreSQL", SiPostgresql, "#4169E1"),
-      chip("Prisma ORM", SiPrisma),
+      chip("Prisma ORM", SiPrisma, "#2D3748"),
       chip("MongoDB", SiMongodb, "#47A248"),
       chip("Material UI", SiMui, "#007FFF"),
       chip("Ant Design", SiAntdesign, "#0170FE"),
@@ -138,8 +138,8 @@ export default function Stack() {
           Technologies I Work With
         </h2>
         <p className="sec-lede reveal" data-parallax="0.32">
-          I work with a modern stack to build fast, scalable and
-          maintainable applications — from schema design to shipped UI.
+          I work with a modern stack to build fast, scalable and maintainable
+          applications — from schema design to shipped UI.
         </p>
         <StackOrbit categories={CATEGORIES} />
       </div>
