@@ -1,118 +1,70 @@
-import Typewriter from "./typewriter";
-import { ResumeTrigger } from "./resume-modal";
+import Image from "next/image";
+import { SiGithub } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa6";
 
 export default function Hero() {
   return (
     <section className="hero">
       <div className="wrap hero-grid">
         <div className="hero-copy" data-parallax="0.35">
-          <span className="eyebrow mono">
-            <Typewriter />
-            <span className="tw-caret" aria-hidden="true" />
-          </span>
+          <span className="eyebrow mono">Hello, I&apos;m</span>
           <h1 className="title">
-            I ship <span className="accent">web &amp; mobile</span> apps from
-            database to design system.
+            Rajesh <span className="accent">R</span>
           </h1>
+          <p className="hero-subtitle">Full Stack Developer</p>
           <p className="lede">
-            Two years building <strong>ERP-scale products</strong> with React,
-            React Native, Nest.js and MongoDB — the kind with dozens of
-            interconnected modules and real users depending on them.
+            I build modern, scalable and user-friendly web &amp; mobile
+            applications using technologies like{" "}
+            <strong>React, NestJS, MongoDB</strong> and more. Passionate about
+            solving real-world problems with clean code and great user
+            experiences.
           </p>
           <div className="status-line mono">
             <span className="pulse" /> available: immediate · Chennai, IN
           </div>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#contact">
-              Start a conversation
+            <a className="btn btn-primary" href="#projects">
+              View My Projects →
             </a>
-            <ResumeTrigger className="btn btn-ghost">View resume</ResumeTrigger>
-            <a className="btn btn-ghost" href="#projects">
-              See the work
+            <a className="btn btn-ghost" href="#contact">
+              Contact Me
+            </a>
+          </div>
+          <div className="hero-social">
+            <a
+              href="https://github.com/rajeshr62423"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <SiGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/rajesh-ravichandran-290185244"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin />
             </a>
           </div>
         </div>
 
-        {/* signature: component tree */}
-        <div className="tree-card reveal" data-parallax="0.5">
-          <div className="tree-head mono">
-            <span className="lights">
-              <i />
-              <i />
-              <i />
-            </span>
-            <span>App.tsx</span>
-          </div>
-          <svg
-            className="tree"
-            viewBox="0 0 360 300"
-            role="img"
-            aria-label="Component tree diagram of the stack"
-          >
-            <path className="edge live" d="M180,52 C180,80 90,78 90,104" />
-            <path className="edge live" d="M180,52 C180,80 270,78 270,104" />
-            <path className="edge" d="M90,140 C90,166 60,168 60,192" />
-            <path className="edge" d="M90,140 C90,166 130,168 130,192" />
-            <path className="edge" d="M270,140 C270,166 240,168 240,192" />
-            <path className="edge live" d="M270,140 C270,166 305,168 305,192" />
-            <path className="edge" d="M60,228 C60,252 60,250 60,268" />
-            <path className="edge" d="M240,228 C240,252 240,250 240,268" />
+        <div className="hero-visual reveal" data-parallax="0.5">
+          <Image
+            src="/profile.png"
+            alt="Rajesh R at his development workstation, surrounded by floating icons for React, Next.js, NestJS, Node.js, MongoDB, PostgreSQL and Prisma"
+            width={1606}
+            height={979}
+            className="hero-photo"
+            priority
+            sizes="(max-width: 880px) 100vw, 50vw"
+          />
+        </div>
 
-            <g className="node root">
-              <rect x="132" y="24" width="96" height="30" rx="7" />
-              <text x="180" y="43" textAnchor="middle">
-                &lt;App /&gt;
-              </text>
-            </g>
-            <g className="node">
-              <rect x="40" y="106" width="100" height="30" rx="7" />
-              <text x="90" y="125" textAnchor="middle">
-                Client
-              </text>
-            </g>
-            <g className="node">
-              <rect x="220" y="106" width="100" height="30" rx="7" />
-              <text x="270" y="125" textAnchor="middle">
-                Server
-              </text>
-            </g>
-            <g className="node">
-              <rect x="18" y="194" width="84" height="28" rx="7" />
-              <text x="60" y="212" textAnchor="middle">
-                React
-              </text>
-            </g>
-            <g className="node">
-              <rect x="92" y="194" width="84" height="28" rx="7" />
-              <text x="134" y="212" textAnchor="middle">
-                Native
-              </text>
-            </g>
-            <g className="node">
-              <rect x="198" y="194" width="84" height="28" rx="7" />
-              <text x="240" y="212" textAnchor="middle">
-                Node
-              </text>
-            </g>
-            <g className="node">
-              <rect x="272" y="194" width="76" height="28" rx="7" />
-              <text x="310" y="212" textAnchor="middle">
-                Nest
-              </text>
-            </g>
-            <g className="node">
-              <rect x="18" y="270" width="84" height="26" rx="7" />
-              <text x="60" y="287" textAnchor="middle">
-                Redux
-              </text>
-            </g>
-            <g className="node">
-              <rect x="198" y="270" width="84" height="26" rx="7" />
-              <text x="240" y="287" textAnchor="middle">
-                MongoDB
-              </text>
-            </g>
-          </svg>
+        <div className="scroll-hint mono" aria-hidden="true">
+          <span>SCROLL DOWN</span>
+          <span className="scroll-hint-chevron" />
         </div>
       </div>
     </section>

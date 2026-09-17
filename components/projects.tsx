@@ -1,3 +1,16 @@
+"use client";
+
+import { useState, type ReactNode } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionTemplate,
+  type PanInfo,
+} from "framer-motion";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { useTilt } from "@/hooks/use-tilt";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
+
 const MINI_PROJECTS = [
   {
     title: "Voltiva",
@@ -29,7 +42,78 @@ const MINI_PROJECTS = [
   },
 ];
 
+function TiltWrap({
+  children,
+  className,
+  maxTilt = 6,
+}: {
+  children: ReactNode;
+  className?: string;
+  maxTilt?: number;
+}) {
+  const reducedMotion = useReducedMotion();
+  const [ref, tilt] = useTilt(reducedMotion, maxTilt);
+  const glareBackground = useMotionTemplate`radial-gradient(circle at ${tilt.glareX}% ${tilt.glareY}%, rgba(255,255,255,0.1), transparent 60%)`;
+
+  return (
+    <motion.div
+      ref={ref}
+      className={`tilt-card${className ? ` ${className}` : ""}`}
+      style={{ rotateX: tilt.rotateX, rotateY: tilt.rotateY }}
+      onPointerMove={tilt.onPointerMove}
+      onPointerLeave={tilt.onPointerLeave}
+    >
+      {children}
+      <motion.div
+        className="tilt-glare"
+        style={{ background: glareBackground }}
+        aria-hidden="true"
+      />
+    </motion.div>
+  );
+}
+
+const flipVariants = {
+  enter: (direction: number) => ({
+    rotateY: direction > 0 ? 90 : -90,
+    opacity: 0,
+  }),
+  center: {
+    rotateY: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    rotateY: direction > 0 ? -90 : 90,
+    opacity: 0,
+  }),
+};
+
 export default function Projects() {
+  const [[active, direction], setActive] = useState<[number, number]>([0, 0]);
+
+  function goTo(i: number) {
+    const clamped = Math.min(MINI_PROJECTS.length - 1, Math.max(0, i));
+    if (clamped === active) return;
+    setActive([clamped, clamped > active ? 1 : -1]);
+  }
+
+  function onStageKeyDown(e: React.KeyboardEvent) {
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      goTo(active + 1);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      goTo(active - 1);
+    }
+  }
+
+  function onDragEnd(_e: unknown, info: PanInfo) {
+    if (info.offset.x < -80) goTo(active + 1);
+    else if (info.offset.x > 80) goTo(active - 1);
+  }
+
+  const current = MINI_PROJECTS[active];
+
   return (
     <section id="projects">
       <div className="wrap">
@@ -37,10 +121,22 @@ export default function Projects() {
           <span className="num">04</span> Projects
         </div>
         <h2 className="sec-title reveal" data-parallax="0.3">
-          Things I&apos;ve built
+          Featured Projects
         </h2>
+        <p className="sec-lede reveal" data-parallax="0.32">
+          A collection of real-world projects built with modern
+          technologies.
+        </p>
+        <a
+          className="btn btn-ghost sec-cta"
+          href="https://github.com/rajeshr62423"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View All Projects →
+        </a>
 
-        <div className="proj reveal" data-parallax="0.42">
+        <TiltWrap className="proj reveal" maxTilt={3}>
           <div className="proj-grid">
             <div className="proj-body">
               <div className="proj-tag mono">FEATURED · ERP PLATFORM</div>
@@ -164,35 +260,94 @@ export default function Projects() {
               </svg>
             </div>
           </div>
+        </TiltWrap>
+
+        <div className="proj-carousel reveal" data-parallax="0.42">
+          <button
+            type="button"
+            className="proj-nav proj-nav-prev"
+            aria-label="Previous project"
+            onClick={() => goTo(active - 1)}
+            disabled={active === 0}
+          >
+            <MdChevronLeft />
+          </button>
+
+          <div
+            className="proj-flip-stage"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Featured projects"
+            tabIndex={0}
+            onKeyDown={onStageKeyDown}
+          >
+            <AnimatePresence custom={direction} mode="wait" initial={false}>
+              <motion.div
+                key={current.title}
+                className="proj-flip-slide"
+                custom={direction}
+                variants={flipVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.15}
+                onDragEnd={onDragEnd}
+                aria-roledescription="slide"
+                aria-label={`${active + 1} of ${MINI_PROJECTS.length}: ${current.title}`}
+              >
+                <div className="proj-mini">
+                  <h3>{current.title}</h3>
+                  <p>{current.description}</p>
+                  <div className="stackrow">
+                    {current.stack.map((s) => (
+                      <span className="chip mono" key={s}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    className="proj-mini-link mono"
+                    href={current.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Live ↗
+                  </a>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <button
+            type="button"
+            className="proj-nav proj-nav-next"
+            aria-label="Next project"
+            onClick={() => goTo(active + 1)}
+            disabled={active === MINI_PROJECTS.length - 1}
+          >
+            <MdChevronRight />
+          </button>
         </div>
 
-        <div className="proj-mini-grid">
-          {MINI_PROJECTS.map((p, idx) => (
-            <div
-              className="proj-mini reveal"
+        <div className="proj-dots" role="tablist" aria-label="Select project">
+          {MINI_PROJECTS.map((p, i) => (
+            <button
               key={p.title}
-              data-parallax={0.38 + idx * 0.08}
-            >
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
-              <div className="stackrow">
-                {p.stack.map((s) => (
-                  <span className="chip mono" key={s}>
-                    {s}
-                  </span>
-                ))}
-              </div>
-              <a
-                className="proj-mini-link mono"
-                href={p.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Live ↗
-              </a>
-            </div>
+              type="button"
+              role="tab"
+              aria-selected={active === i}
+              aria-label={`Go to ${p.title}`}
+              className={`proj-dot${active === i ? " active" : ""}`}
+              onClick={() => goTo(i)}
+            />
           ))}
         </div>
+        <p className="sr-only" aria-live="polite">
+          {current.title} — project {active + 1} of {MINI_PROJECTS.length}
+        </p>
       </div>
     </section>
   );

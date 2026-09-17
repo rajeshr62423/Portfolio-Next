@@ -1,3 +1,4 @@
+import { MdFileDownload } from "react-icons/md";
 import ThemeToggle from "./theme-toggle";
 import { ResumeTrigger } from "./resume-modal";
 import MobileNav from "./mobile-nav";
@@ -10,14 +11,16 @@ export default function Nav() {
           <span className="dot" /> Rajesh R.
         </a>
         <nav className="nav-links">
+          <a href="#top">Home</a>
+          <a href="#about">About</a>
+          <a href="#stack">Skills</a>
           <a href="#work">Experience</a>
           <a href="#projects">Projects</a>
-          <a href="#stack">Stack</a>
-          <ResumeTrigger className="resume-trigger">Resume</ResumeTrigger>
+          <a href="#contact">Contact</a>
           <ThemeToggle />
-          <a className="nav-cta" href="#contact">
-            Get in touch
-          </a>
+          <ResumeTrigger className="nav-cta">
+            <MdFileDownload aria-hidden="true" /> Download CV
+          </ResumeTrigger>
         </nav>
         <MobileNav />
       </div>

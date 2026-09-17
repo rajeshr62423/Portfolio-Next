@@ -1,52 +1,65 @@
+import {
+  MdLocationOn,
+  MdEmail,
+  MdWorkOutline,
+  MdCheckCircle,
+} from "react-icons/md";
+import { ResumeTrigger } from "./resume-modal";
+
+const INFO_ROWS = [
+  { icon: MdLocationOn, label: "Location", value: "Chennai, India" },
+  {
+    icon: MdEmail,
+    label: "Email",
+    value: "rajeshravichandrans2001@gmail.com",
+  },
+  { icon: MdWorkOutline, label: "Experience", value: "2+ Years" },
+  { icon: MdCheckCircle, label: "Status", value: "Open to Work" },
+];
+
 export default function About() {
   return (
     <section id="about">
       <div className="wrap">
         <div className="sec-label mono">
-          <span className="num">01</span> Profile
+          <span className="num">01</span> About Me
         </div>
         <div className="about-grid">
           <div className="about reveal" data-parallax="0.4">
-            <h2 className="sec-title">
-              A full-stack developer who thinks in components and ships in
-              sprints.
-            </h2>
+            <h2 className="sec-title">Turning Ideas Into Scalable Products</h2>
             <p>
-              I build scalable, user-centric applications across web and mobile.
-              On the front end that&apos;s{" "}
-              <strong>React.js, Next.js and React Native</strong>; on the back
-              end, <strong>NestJS, Node.js and Express</strong> — with{" "}
-              <strong>Prisma/PostgreSQL and MongoDB</strong> for schema design
-              and data modeling, and Redux/Redux-Saga taming the complex,
-              asynchronous data flows that large products tend to grow.
+              I&apos;m a passionate Full Stack Developer with experience
+              building web and mobile applications using{" "}
+              <strong>React, NestJS, MongoDB</strong> and modern tools —{" "}
+              <strong>Next.js, Prisma and PostgreSQL</strong> among them. I
+              enjoy turning business workflows into normalized data models
+              and production-ready modules, learning new technologies, and
+              creating solutions that make an impact.
             </p>
-            <p>
-              Most of my day-to-day is spent turning business workflows into
-              normalized data models and production-ready modules — spanning
-              schema design, REST API development, and release — plus
-              independent projects exploring self-hosted LLM integration.
-            </p>
+            <ResumeTrigger className="btn btn-ghost about-cta">
+              More About Me →
+            </ResumeTrigger>
           </div>
-          <div className="facts reveal" data-parallax="0.55">
-            <div className="fact">
-              <span className="k">experience</span>
-              <span className="v">2 years</span>
-            </div>
-            <div className="fact">
-              <span className="k">focus</span>
-              <span className="v">NestJS · React · Prisma</span>
-            </div>
-            <div className="fact">
-              <span className="k">based</span>
-              <span className="v">Chennai, TN</span>
-            </div>
-            <div className="fact">
-              <span className="k">status</span>
-              <span className="v on">Open to work</span>
-            </div>
-            <div className="fact">
-              <span className="k">notice</span>
-              <span className="v">Immediate</span>
+          <div className="about-side reveal" data-parallax="0.55">
+            <div className="about-cards">
+              <div className="info-card info-card-solo">
+                {INFO_ROWS.map((row) => (
+                  <div className="info-row" key={row.label}>
+                    <span className="info-icon">
+                      <row.icon />
+                    </span>
+                    <span className="info-text">
+                      <span className="info-label">{row.label}</span>
+                      <span className="info-value">{row.value}</span>
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="tagline-card" aria-hidden="true">
+                <span>Clean Code</span>
+                <span>Better Tomorrow</span>
+                <span className="tagline-arrow">→</span>
+              </div>
             </div>
           </div>
         </div>

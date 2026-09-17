@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { MdFileDownload } from "react-icons/md";
 import ThemeToggle from "./theme-toggle";
 import { ResumeTrigger } from "./resume-modal";
 
@@ -45,21 +46,27 @@ export default function MobileNav() {
       </button>
 
       <div className={`mobile-panel${open ? " open" : ""}`} hidden={!open}>
+        <a href="#top" onClick={close}>
+          Home
+        </a>
+        <a href="#about" onClick={close}>
+          About
+        </a>
+        <a href="#stack" onClick={close}>
+          Skills
+        </a>
         <a href="#work" onClick={close}>
           Experience
         </a>
         <a href="#projects" onClick={close}>
           Projects
         </a>
-        <a href="#stack" onClick={close}>
-          Stack
+        <a href="#contact" onClick={close}>
+          Contact
         </a>
-        <ResumeTrigger className="mobile-panel-link" onClick={close}>
-          Resume
+        <ResumeTrigger className="nav-cta" onClick={close}>
+          <MdFileDownload aria-hidden="true" /> Download CV
         </ResumeTrigger>
-        <a className="nav-cta" href="#contact" onClick={close}>
-          Get in touch
-        </a>
       </div>
     </div>
   );

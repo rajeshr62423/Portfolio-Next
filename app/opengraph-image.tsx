@@ -15,8 +15,8 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "90px",
-          background: "#0A0C12",
-          color: "#EAECF3",
+          background: "#060B0A",
+          color: "#F0FDF4",
           fontFamily: "sans-serif",
         }}
       >
@@ -33,7 +33,7 @@ export default async function OpengraphImage() {
               width: 20,
               height: 20,
               borderRadius: 10,
-              background: "#5FE6C0",
+              background: "#10B981",
               display: "flex",
             }}
           />
@@ -51,14 +51,14 @@ export default async function OpengraphImage() {
           }}
         >
           Full Stack Developer&nbsp;
-          <span style={{ color: "#5FE6C0", display: "flex" }}>
+          <span style={{ color: "#10B981", display: "flex" }}>
             (NestJS + React)
           </span>
         </div>
         <div
           style={{
             fontSize: 30,
-            color: "#8B92A9",
+            color: "#D1D5DB",
             marginTop: 32,
             maxWidth: 860,
             display: "flex",
@@ -70,7 +70,7 @@ export default async function OpengraphImage() {
         <div
           style={{
             fontSize: 24,
-            color: "#5FE6C0",
+            color: "#10B981",
             marginTop: 44,
             fontFamily: "monospace",
             display: "flex",

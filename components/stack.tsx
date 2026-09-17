@@ -1,4 +1,7 @@
+"use client";
+
 import type { IconType } from "react-icons";
+import StackOrbit from "./stack/stack-orbit";
 import {
   SiJavascript,
   SiTypescript,
@@ -40,13 +43,14 @@ import {
   MdSmartToy,
 } from "react-icons/md";
 
-type Chip = { label: string; icon: IconType; color: string };
+export type Chip = { label: string; icon: IconType; color: string };
+export type SkillCategory = { title: string; chips: Chip[] };
 
 function chip(label: string, icon: IconType, color = "currentColor"): Chip {
   return { label, icon, color };
 }
 
-const CATEGORIES: { title: string; chips: Chip[] }[] = [
+export const CATEGORIES: SkillCategory[] = [
   {
     title: "Languages",
     chips: [
@@ -128,30 +132,16 @@ export default function Stack() {
     <section id="stack">
       <div className="wrap">
         <div className="sec-label mono">
-          <span className="num">02</span> Stack
+          <span className="num">02</span> Skills
         </div>
         <h2 className="sec-title reveal" data-parallax="0.3">
-          What I build with
+          Technologies I Work With
         </h2>
-        <div className="skills-grid">
-          {CATEGORIES.map((cat, idx) => (
-            <div
-              className="skill-cat reveal"
-              key={cat.title}
-              data-parallax={0.35 + idx * 0.05}
-            >
-              <h3>{cat.title}</h3>
-              <div className="chips">
-                {cat.chips.map((c) => (
-                  <span className="chip" key={c.label}>
-                    <c.icon className="chip-icon" style={{ color: c.color }} />
-                    {c.label}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <p className="sec-lede reveal" data-parallax="0.32">
+          I work with a modern stack to build fast, scalable and
+          maintainable applications — from schema design to shipped UI.
+        </p>
+        <StackOrbit categories={CATEGORIES} />
       </div>
     </section>
   );
