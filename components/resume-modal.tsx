@@ -75,16 +75,19 @@ export function ResumeTrigger({
   children,
   className,
   onClick,
+  "aria-label": ariaLabel,
 }: {
   children: ReactNode;
   className?: string;
   onClick?: () => void;
+  "aria-label"?: string;
 }) {
   const open = useResumeModal();
   return (
     <button
       type="button"
       className={className}
+      aria-label={ariaLabel}
       onClick={() => {
         onClick?.();
         open();

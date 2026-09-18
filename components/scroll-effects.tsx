@@ -147,6 +147,19 @@ export default function ScrollEffects() {
     );
     reveals.forEach((el) => observer.observe(el));
 
+    // Safety net: a direct hash link, restored scroll position, or a fast
+    // nav jump can land a .reveal element in view before the observer's
+    // first check settles, or move it through the viewport without ever
+    // crossing the threshold as "entering". Either way it would otherwise
+    // stay at opacity:0 forever — force-reveal anything still hidden after
+    // a short grace period.
+    const revealFallback = window.setTimeout(() => {
+      document.querySelectorAll(".reveal:not(.in)").forEach((el) => {
+        el.classList.add("in");
+        observer.unobserve(el);
+      });
+    }, 1200);
+
     document.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("mousemove", onMouseMove);
     document.addEventListener("click", onClick);
@@ -180,6 +193,7 @@ export default function ScrollEffects() {
       window.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("click", onClick);
       observer.disconnect();
+      window.clearTimeout(revealFallback);
       if (rafId) cancelAnimationFrame(rafId);
       lenis?.destroy();
     };

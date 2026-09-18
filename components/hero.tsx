@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa6";
+import { ResumeTrigger } from "./resume-modal";
 
 export default function Hero() {
   return (
@@ -13,22 +14,25 @@ export default function Hero() {
           </h1>
           <p className="hero-subtitle">Full Stack Developer</p>
           <p className="lede">
-            I build modern, scalable and user-friendly web &amp; mobile
-            applications using technologies like{" "}
-            <strong>React, NestJS, MongoDB</strong> and more. Passionate about
-            solving real-world problems with clean code and great user
-            experiences.
+            2 years of experience building production applications with{" "}
+            <strong>React.js, Node.js/NestJS, MongoDB and TypeScript</strong>{" "}
+            — including a custom ERP platform running across multiple live
+            client deployments, plus independent full-stack projects on
+            Next.js and PostgreSQL/Prisma.
           </p>
           <div className="status-line mono">
             <span className="pulse" /> available: immediate · Chennai, IN
           </div>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#projects">
-              View My Projects →
+              View Projects →
             </a>
             <a className="btn btn-ghost" href="#contact">
               Contact Me
             </a>
+            <ResumeTrigger className="btn btn-ghost">
+              Download Resume
+            </ResumeTrigger>
           </div>
           <div className="hero-social">
             <a
@@ -51,26 +55,26 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-bg reveal" aria-hidden="true">
-        <Image
-          src="/profile.png"
-          alt=""
-          width={1606}
-          height={979}
-          className="hero-photo hero-photo-dark"
-          priority
-          sizes="100vw"
-        />
-        <Image
-          src="/profile-light.png"
-          alt=""
-          width={1606}
-          height={979}
-          className="hero-photo hero-photo-light"
-          sizes="100vw"
-        />
-        <div className="hero-scrim" />
-      </div>
+        <div className="hero-bg" aria-hidden="true">
+          <Image
+            src="/profile.png"
+            alt=""
+            width={1606}
+            height={979}
+            className="hero-photo hero-photo-dark"
+            priority
+            sizes="(max-width: 880px) calc(100vw - 56px), 58vw"
+          />
+          <Image
+            src="/profile-light.png"
+            alt=""
+            width={1606}
+            height={979}
+            className="hero-photo hero-photo-light"
+            sizes="(max-width: 880px) calc(100vw - 56px), 58vw"
+          />
+          <div className="hero-scrim" />
+        </div>
 
       <div className="scroll-hint mono" aria-hidden="true">
         <span>SCROLL DOWN</span>

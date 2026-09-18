@@ -28,13 +28,15 @@ export default function About() {
           <div className="about reveal" data-parallax="0.4">
             <h2 className="sec-title">Turning Ideas Into Scalable Products</h2>
             <p>
-              I&apos;m a passionate Full Stack Developer with experience
-              building web and mobile applications using{" "}
-              <strong>React, NestJS, MongoDB</strong> and modern tools —{" "}
-              <strong>Next.js, Prisma and PostgreSQL</strong> among them. I
-              enjoy turning business workflows into normalized data models
-              and production-ready modules, learning new technologies, and
-              creating solutions that make an impact.
+              I&apos;m a Full Stack Developer with 2 years of experience
+              building production applications. At GwayIT (Gway Tech
+              Solutions), I build and extend GwayERP — a custom ERP platform
+              — using <strong>React.js, NestJS and MongoDB</strong>,
+              developing REST APIs and full-stack modules for live client
+              deployments. Outside work, I build independent full-stack
+              projects with <strong>Next.js, PostgreSQL/Prisma</strong> and{" "}
+              <strong>React Native</strong>, covering everything from schema
+              design to production deployment.
             </p>
             <ResumeTrigger className="btn btn-ghost about-cta">
               More About Me →

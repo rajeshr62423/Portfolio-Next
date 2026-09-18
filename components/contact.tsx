@@ -9,8 +9,8 @@ export default function Contact() {
           Let&apos;s build something <span className="accent">real</span>.
         </h2>
         <p data-parallax="0.4">
-          Open to full-stack and mobile roles, freelance work, or just talking
-          shop about React, React Native and MongoDB at scale.
+          Open to Full Stack Developer roles, freelance work, or just talking
+          shop about React.js, Node.js/NestJS and MongoDB.
         </p>
         <div className="contact-links" data-parallax="0.5">
           <a
@@ -47,7 +47,9 @@ export default function Contact() {
             GitHub
           </a>
           <CopyEmailButton />
-          <ResumeTrigger className="btn btn-ghost">View resume</ResumeTrigger>
+          <ResumeTrigger className="btn btn-ghost">
+            Download Resume
+          </ResumeTrigger>
         </div>
       </div>
     </section>

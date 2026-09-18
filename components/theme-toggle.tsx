@@ -16,6 +16,8 @@ export default function ThemeToggle() {
 
     const apply = () => {
       root.setAttribute("data-theme", next);
+      const fav = document.getElementById("theme-favicon");
+      fav?.setAttribute("href", next === "light" ? "/fav-light.png" : "/fav-dark.png");
       try {
         localStorage.setItem("theme", next);
       } catch {

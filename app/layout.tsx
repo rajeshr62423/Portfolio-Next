@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -9,7 +9,7 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
 });
 
-const ibmPlexSans = IBM_Plex_Sans({
+const spaceGroteskBody = Space_Grotesk({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -28,12 +28,14 @@ export const metadata: Metadata = {
   keywords: [
     "Rajesh R",
     "Full Stack Developer",
+    "Full Stack Developer Chennai",
+    "React.js Developer Chennai",
+    "Node.js Developer Chennai",
     "NestJS Developer",
-    "React Developer",
+    "MERN Stack Developer Chennai",
     "React Native Developer",
     "Next.js Developer",
     "ERP Developer",
-    "Chennai",
   ],
   authors: [{ name: "Rajesh R" }],
   alternates: {
@@ -91,6 +93,8 @@ const themeInitScript = `
     try{ t = localStorage.getItem('theme'); }catch(e){}
     if(!t){ t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark'; }
     document.documentElement.setAttribute('data-theme', t);
+    var fav = document.getElementById('theme-favicon');
+    if(fav) fav.setAttribute('href', t === 'light' ? '/fav-light.png' : '/fav-dark.png');
   })();
 `;
 
@@ -99,9 +103,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${spaceGroteskBody.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        <link
+          id="theme-favicon"
+          rel="icon"
+          type="image/png"
+          href="/fav-dark.png"
+        />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"

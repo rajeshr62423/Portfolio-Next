@@ -1,14 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MdWork } from "react-icons/md";
+import {
+  MdWork,
+  MdCalendarToday,
+  MdBusiness,
+  MdLocationOn,
+  MdCheckCircle,
+  MdOpenInNew,
+} from "react-icons/md";
+import { SiReact, SiNodedotjs, SiMongodb, SiNestjs } from "react-icons/si";
 import { ResumeTrigger } from "./resume-modal";
 
+const EXP_STACK = [
+  { label: "React", icon: SiReact, color: "#61DAFB" },
+  { label: "Node.js", icon: SiNodedotjs, color: "#339933" },
+  { label: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { label: "NestJS", icon: SiNestjs, color: "#E0234E" },
+];
+
 const EXP_BULLETS = [
-  "Own module-level delivery within GwayERP, a custom ERP platform on React/Vite, NestJS, and MongoDB, serving several client implementations running in parallel.",
-  "Translate client business workflows into normalized data models and module specifications, then carry them through to production across both frontend and backend.",
-  "Modeled the Dispatch Management inventory flow around a parent request record with allocation lines, enabling partial fulfillment and accurate stock tracking across multi-stage dispatches.",
-  "Integrate third-party REST APIs into core modules, handling authentication, data mapping, and error states so downstream workflows stay reliable.",
+  {
+    lead: "Own end-to-end delivery of modules within GwayERP, a custom ERP platform",
+    detail:
+      "on React/Vite, NestJS, and MongoDB, running across multiple live client implementations in parallel.",
+  },
+  {
+    lead: "Build and extend core ERP modules",
+    detail:
+      "— CRM, Sales, Procurement, Inventory, Service, Finance, and Gate Management — translating each client's business workflow into a normalized data model before implementation.",
+  },
+  {
+    lead: "Implement configurable, client-specific workflows and dynamic forms",
+    detail:
+      "on the frontend, backed by reusable React component patterns shared across modules.",
+  },
+  {
+    lead: "Design NestJS REST APIs",
+    detail:
+      "alongside the MongoDB schemas they serve, covering both new module development and ongoing data-model changes.",
+  },
+  {
+    lead: "Integrate third-party REST APIs",
+    detail:
+      "into core modules, handling authentication, data mapping, and error states so downstream workflows stay reliable.",
+  },
 ];
 
 export default function Experience() {
@@ -29,25 +65,85 @@ export default function Experience() {
         </ResumeTrigger>
 
         <div className="exp-stage reveal" data-parallax="0.45">
-          <div className="exp-card">
-            <span className="exp-badge">
+          <div className="exp-visual" aria-hidden="true">
+            <div className="exp-visual-glow" />
+            <div className="exp-visual-badge">
               <MdWork />
-            </span>
-            <div className="exp-when mono">
-              <span className="pulse" /> Oct 2024 — Present
             </div>
-            <div className="exp-role">Full Stack Developer</div>
-            <div className="exp-co">Gway Tech Solutions · Chennai, India</div>
+            <div className="exp-visual-stack">
+              {EXP_STACK.map((s, i) => (
+                <motion.div
+                  key={s.label}
+                  className="exp-visual-chip mono"
+                  style={{ animationDelay: `${i * 0.35}s` }}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.35, delay: i * 0.08 }}
+                >
+                  <span
+                    className="exp-visual-chip-icon"
+                    style={{ color: s.color }}
+                  >
+                    <s.icon aria-hidden="true" />
+                  </span>
+                  {s.label}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div className="exp-card">
+            <a
+              className="exp-card-link"
+              aria-label="GwayERP company website"
+              href="https://www.gwayerp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MdOpenInNew />
+            </a>
+
+            <div className="exp-card-head">
+              <span className="exp-badge">
+                <MdWork />
+              </span>
+              <div className="exp-card-headtext">
+                <div className="exp-when mono">
+                  <MdCalendarToday aria-hidden="true" />
+                  Oct 2024 — Present
+                  <span className="exp-pill">
+                    <span className="pulse" /> Full-time
+                  </span>
+                </div>
+                <div className="exp-role">Full Stack Developer</div>
+              </div>
+            </div>
+
+            <div className="exp-co">
+              <span>
+                <MdBusiness aria-hidden="true" /> GwayIT (Gway Tech Solutions)
+              </span>
+              <span>
+                <MdLocationOn aria-hidden="true" /> Chennai, India
+              </span>
+            </div>
+
+            <hr className="exp-divider" />
+
             <ul>
               {EXP_BULLETS.map((bullet, i) => (
                 <motion.li
-                  key={bullet}
+                  key={bullet.lead}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.35, delay: i * 0.08 }}
                 >
-                  {bullet}
+                  <MdCheckCircle className="exp-check" aria-hidden="true" />
+                  <span>
+                    <strong>{bullet.lead}</strong> {bullet.detail}
+                  </span>
                 </motion.li>
               ))}
             </ul>
