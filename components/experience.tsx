@@ -36,7 +36,7 @@ export default function Experience() {
             <div className="exp-when mono">
               <span className="pulse" /> Oct 2024 — Present
             </div>
-            <div className="exp-role">Developer</div>
+            <div className="exp-role">Full Stack Developer</div>
             <div className="exp-co">Gway Tech Solutions · Chennai, India</div>
             <ul>
               {EXP_BULLETS.map((bullet, i) => (
