@@ -5,7 +5,7 @@ import { FaLinkedin } from "react-icons/fa6";
 export default function Hero() {
   return (
     <section className="hero">
-      <div className="wrap hero-grid">
+      <div className="wrap hero-inner">
         <div className="hero-copy" data-parallax="0.35">
           <span className="eyebrow mono">Hello, I&apos;m</span>
           <h1 className="title">
@@ -49,23 +49,32 @@ export default function Hero() {
             </a>
           </div>
         </div>
+      </div>
 
-        <div className="hero-visual reveal" data-parallax="0.5">
-          <Image
-            src="/profile.png"
-            alt="Rajesh R at his development workstation, surrounded by floating icons for React, Next.js, NestJS, Node.js, MongoDB, PostgreSQL and Prisma"
-            width={1606}
-            height={979}
-            className="hero-photo"
-            priority
-            sizes="(max-width: 880px) 100vw, 50vw"
-          />
-        </div>
+      <div className="hero-bg reveal" aria-hidden="true">
+        <Image
+          src="/profile.png"
+          alt=""
+          width={1606}
+          height={979}
+          className="hero-photo hero-photo-dark"
+          priority
+          sizes="100vw"
+        />
+        <Image
+          src="/profile-light.png"
+          alt=""
+          width={1606}
+          height={979}
+          className="hero-photo hero-photo-light"
+          sizes="100vw"
+        />
+        <div className="hero-scrim" />
+      </div>
 
-        <div className="scroll-hint mono" aria-hidden="true">
-          <span>SCROLL DOWN</span>
-          <span className="scroll-hint-chevron" />
-        </div>
+      <div className="scroll-hint mono" aria-hidden="true">
+        <span>SCROLL DOWN</span>
+        <span className="scroll-hint-chevron" />
       </div>
     </section>
   );

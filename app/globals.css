@@ -13,6 +13,8 @@
   /* primary emerald accent */
   --mint: #10b981;
   --mint-dim: #0b7a57;
+  /* text color for content sitting on top of a solid --mint fill */
+  --mint-contrast: #04150f;
   /* secondary accent — repurposed as teal, name kept for the wide var(--coral) call-site surface */
   --coral: #14b8a6;
   --nav-bg: rgba(6, 11, 10, 0.72);
@@ -49,6 +51,7 @@
   --faint: #6b7a73;
   --mint: #0b8f63;
   --mint-dim: #0a7350;
+  --mint-contrast: #f4fbf8;
   --coral: #0d9488;
   --nav-bg: rgba(244, 251, 248, 0.82);
   --doc-bg: #e8f3ee;
@@ -442,7 +445,7 @@ button.nav-cta svg {
   padding: 12px 10px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 920px) {
   .nav-links {
     display: none;
   }
@@ -455,18 +458,76 @@ button.nav-cta svg {
 .hero {
   position: relative;
   z-index: 1;
+  overflow: hidden;
   padding: 70px 0 40px;
 }
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 480px) 1fr;
-  gap: 40px;
-  align-items: stretch;
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+.hero-copy {
+  max-width: 560px;
+}
+
+/* mobile / narrow: image sits below the text as a normal block —
+   cropped tighter than desktop so the baked-in info panel on the image's
+   right edge (which duplicates the real, accessible About section info
+   card) doesn't peek out and collide with the fixed StarkBot launcher */
+.hero-bg {
+  position: relative;
+  width: calc(100% - 56px);
+  margin: 32px 28px 0;
+  aspect-ratio: 1 / 1.05;
+  border-radius: var(--r);
+  overflow: hidden;
 }
 @media (max-width: 880px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
+  .hero-bg .hero-photo {
+    object-position: 48% 32%;
+  }
+}
+.hero-scrim {
+  display: none;
+}
+
+/* desktop: image bleeds full-width behind the text, scrim keeps it readable */
+@media (min-width: 881px) {
+  .hero {
+    min-height: 680px;
+    display: flex;
+    align-items: center;
+    padding: 90px 0;
+  }
+  /* the hero goes full-bleed now, so let its text hug the true left edge
+     with its own padding instead of following the shared centered --maxw
+     column every other section uses — otherwise it strands in the middle
+     of the screen on wide viewports */
+  .hero-inner {
+    max-width: none;
+    margin: 0;
+    padding-left: clamp(32px, 6vw, 100px);
+    padding-right: 28px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    aspect-ratio: auto;
+    width: auto;
+    margin: 0;
+    border-radius: 0;
+  }
+  .hero-scrim {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      var(--ink) 0%,
+      var(--ink) 45%,
+      transparent 80%
+    );
   }
 }
 
@@ -665,7 +726,7 @@ h1.title .accent {
 }
 .btn-primary {
   background: var(--mint);
-  color: #04150f;
+  color: var(--mint-contrast);
   border: 1px solid var(--mint);
   position: relative;
   overflow: hidden;
@@ -747,27 +808,29 @@ h1.title .accent {
 .tree-head .lights i:nth-child(3) {
   background: var(--mint);
 }
-.hero-visual {
-  position: relative;
-  border-radius: var(--r);
-  overflow: hidden;
-  border: 1px solid var(--line-2);
-  background: linear-gradient(180deg, var(--ink-2), var(--ink));
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
-  min-height: 340px;
-}
 .hero-photo {
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
-  object-position: 58% 32%;
+  object-position: 66% 38%;
 }
-@media (max-width: 880px) {
-  .hero-visual {
-    min-height: 0;
-    aspect-ratio: 4 / 3;
-  }
+.hero-photo-dark,
+.hero-photo-light {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.hero-photo-light {
+  opacity: 0;
+  pointer-events: none;
+}
+:root[data-theme="light"] .hero-photo-dark {
+  opacity: 0;
+  pointer-events: none;
+}
+:root[data-theme="light"] .hero-photo-light {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* ---------- section shell ---------- */
@@ -1435,6 +1498,17 @@ h2.sec-title {
 .proj-nav:disabled {
   opacity: 0.35;
   cursor: default;
+}
+@media (max-width: 600px) {
+  /* the arrow buttons eat too much width on narrow screens, squeezing the
+     card into an unnecessarily tall/narrow column — swipe (already
+     supported via drag) and the dots below cover navigation instead */
+  .proj-nav {
+    display: none;
+  }
+  .proj-flip-stage {
+    max-width: none;
+  }
 }
 .proj-dots {
   display: flex;
