@@ -151,6 +151,24 @@ const PROJECTS: Project[] = [
     image: "/projects/seno.png",
   },
   {
+    title: "DigiMoiBook",
+    badgeLeft: { icon: MdPhoneIphone, label: "Web + Mobile" },
+    badgeRight: "Personal Project",
+    description:
+      "A web and mobile app for digitizing event guest, gift, and contribution records — structured so they stay queryable per event and per guest.",
+    stack: [
+      "Next.js",
+      "React Native",
+      "TypeScript",
+      "MongoDB",
+      "Render",
+      "Vercel",
+    ],
+    link: "https://digimoibook-app.vercel.app/",
+    linkLabel: "Live Project",
+    image: "/projects/digimoibook.png",
+  },
+  {
     title: "Voltiva",
     badgeLeft: { icon: MdWeb, label: "Web App" },
     badgeRight: "Not on Resume",
@@ -208,24 +226,6 @@ const PROJECTS: Project[] = [
     link: "https://jarvis-omega-ai.vercel.app/",
     linkLabel: "Live Project",
     image: "/projects/starkai.png",
-  },
-  {
-    title: "DigiMoiBook",
-    badgeLeft: { icon: MdPhoneIphone, label: "Web + Mobile" },
-    badgeRight: "Personal Project",
-    description:
-      "A web and mobile app for digitizing event guest, gift, and contribution records — structured so they stay queryable per event and per guest.",
-    stack: [
-      "Next.js",
-      "React Native",
-      "TypeScript",
-      "MongoDB",
-      "Render",
-      "Vercel",
-    ],
-    link: "https://digimoibook-app.vercel.app/",
-    linkLabel: "Live Project",
-    image: "/projects/digimoibook.png",
   },
 ];
 
