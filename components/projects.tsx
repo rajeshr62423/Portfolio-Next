@@ -4,7 +4,14 @@ import { useState, type ReactNode } from "react";
 import Image from "next/image";
 import type { IconType } from "react-icons";
 import { motion, useMotionTemplate, type PanInfo } from "framer-motion";
-import { MdChevronLeft, MdChevronRight, MdStar, MdWeb, MdSmartToy, MdPhoneIphone } from "react-icons/md";
+import {
+  MdChevronLeft,
+  MdChevronRight,
+  MdStar,
+  MdWeb,
+  MdSmartToy,
+  MdPhoneIphone,
+} from "react-icons/md";
 import {
   SiReact,
   SiVite,
@@ -20,9 +27,13 @@ import {
   SiOllama,
   SiRender,
   SiVercel,
+  SiJavascript,
+  SiReacthookform,
+  SiSecurityscorecard,
 } from "react-icons/si";
 import { useTilt } from "@/hooks/use-tilt";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { FaPeopleGroup } from "react-icons/fa6";
 
 type StackKey =
   | "React.js"
@@ -40,7 +51,10 @@ type StackKey =
   | "TypeScript"
   | "Ollama"
   | "Render"
-  | "Vercel";
+  | "Vercel"
+  | "JavaScript"
+  | "React Hook Form"
+  | "RBAC";
 
 const STACK_ICON: Record<StackKey, { icon: IconType; color: string }> = {
   "React.js": { icon: SiReact, color: "#61DAFB" },
@@ -59,6 +73,9 @@ const STACK_ICON: Record<StackKey, { icon: IconType; color: string }> = {
   Ollama: { icon: SiOllama, color: "#D8D8D6" },
   Render: { icon: SiRender, color: "#46E3B7" },
   Vercel: { icon: SiVercel, color: "#EDEDED" },
+  JavaScript: { icon: SiJavascript, color: "#f2eb13" },
+  "React Hook Form": { icon: SiReacthookform, color: "#0955fa" },
+  RBAC: { icon: SiSecurityscorecard, color: "rgba(66, 8, 242, 0.67)" },
 };
 
 function hexToRgba(hex: string, alpha: number) {
@@ -97,10 +114,41 @@ const PROJECTS: Project[] = [
     badgeRight: "GwayIT · Professional",
     description:
       "A configurable ERP platform spanning CRM, Sales, Procurement, Inventory, Service, Finance and Gate Management. Configurable workflows and dynamic forms let one codebase adapt to each client's process, backed by a reusable component and dashboard layer, Redux/Redux-Saga state, and NestJS REST APIs handling CRUD, cross-module data flow, and reporting.",
-    stack: ["React.js", "React Native", "Vite", "NestJS", "MongoDB", "Redux", "Redux-Saga"],
+    stack: [
+      "React.js",
+      "React Native",
+      "Vite",
+      "NestJS",
+      "MongoDB",
+      "Redux",
+      "Redux-Saga",
+    ],
     link: null,
     linkLabel: "Internal Platform",
     image: null,
+  },
+  {
+    title: "Seno.io",
+    badgeLeft: { icon: FaPeopleGroup, label: "HRMS & SaaS" },
+    badgeRight: "Personal Project",
+    description:
+      "A multi-tenant HRMS SaaS platform designed to streamline employee management, client operations, and organizational workflows. Built with role-based access control supporting Owner and Client user levels, with secure authentication, employee management, and scalable business operations.",
+    stack: [
+      "Next.js",
+      "React.js",
+      "JavaScript",
+      "Redux-Saga",
+      "React Hook Form",
+      "NestJS",
+      "MongoDB",
+      "RBAC",
+      "Brevo",
+      "Vercel",
+      "Render",
+    ],
+    link: "https://seno-io.vercel.app/login",
+    linkLabel: "Live Project",
+    image: "/projects/seno.png",
   },
   {
     title: "Voltiva",
@@ -108,7 +156,16 @@ const PROJECTS: Project[] = [
     badgeRight: "Not on Resume",
     description:
       "Smarter EV charging management — manage EV charging stations, customers, payments and operations, all in one platform.",
-    stack: ["NestJS", "PostgreSQL", "Next.js", "Prisma ORM", "Razorpay", "Brevo", "Render", "Vercel"],
+    stack: [
+      "NestJS",
+      "PostgreSQL",
+      "Next.js",
+      "Prisma ORM",
+      "Razorpay",
+      "Brevo",
+      "Render",
+      "Vercel",
+    ],
     link: "https://voltiva-frontend.vercel.app/",
     linkLabel: "Live Project",
     image: "/projects/voltiva.png",
@@ -119,7 +176,15 @@ const PROJECTS: Project[] = [
     badgeRight: "Personal Project",
     description:
       "A workspace application for engineering teams to plan, track, and deliver work, with a NestJS API covering projects, tasks, and team assignment. The relational schema in Prisma is modeled around a role-based workspace structure, enforcing access boundaries at the data layer.",
-    stack: ["Next.js", "React Native", "NestJS", "Prisma ORM", "PostgreSQL", "Render", "Vercel"],
+    stack: [
+      "Next.js",
+      "React Native",
+      "NestJS",
+      "Prisma ORM",
+      "PostgreSQL",
+      "Render",
+      "Vercel",
+    ],
     link: "https://seyora-app.vercel.app/",
     linkLabel: "Live Project",
     image: "/projects/seyora.png",
@@ -130,7 +195,16 @@ const PROJECTS: Project[] = [
     badgeRight: "Personal Project",
     description:
       "A personal AI operating system that layers a conversational assistant over the user's own data and day-to-day tasks, integrating self-hosted language models through the Ollama API behind session-based authentication.",
-    stack: ["Next.js", "React Native", "NestJS", "Prisma ORM", "PostgreSQL", "Ollama", "Render", "Vercel"],
+    stack: [
+      "Next.js",
+      "React Native",
+      "NestJS",
+      "Prisma ORM",
+      "PostgreSQL",
+      "Ollama",
+      "Render",
+      "Vercel",
+    ],
     link: "https://jarvis-omega-ai.vercel.app/",
     linkLabel: "Live Project",
     image: "/projects/starkai.png",
@@ -141,7 +215,14 @@ const PROJECTS: Project[] = [
     badgeRight: "Personal Project",
     description:
       "A web and mobile app for digitizing event guest, gift, and contribution records — structured so they stay queryable per event and per guest.",
-    stack: ["Next.js", "React Native", "TypeScript", "MongoDB", "Render", "Vercel"],
+    stack: [
+      "Next.js",
+      "React Native",
+      "TypeScript",
+      "MongoDB",
+      "Render",
+      "Vercel",
+    ],
     link: "https://digimoibook-app.vercel.app/",
     linkLabel: "Live Project",
     image: "/projects/digimoibook.png",
@@ -172,7 +253,13 @@ function ErpDiagram() {
         <text className="mod-core-text" x="160" y="158" textAnchor="middle">
           ERP
         </text>
-        <text className="mod-core-text" x="160" y="170" textAnchor="middle" style={{ fontSize: 9 }}>
+        <text
+          className="mod-core-text"
+          x="160"
+          y="170"
+          textAnchor="middle"
+          style={{ fontSize: 9 }}
+        >
           core
         </text>
       </g>
@@ -234,7 +321,10 @@ function ProjectCardInner({ project }: { project: Project }) {
             <i />
             <i />
           </span>
-          <span>{project.title.toLowerCase()}{project.image ? ".app" : ".sys"}</span>
+          <span>
+            {project.title.toLowerCase()}
+            {project.image ? ".app" : ".sys"}
+          </span>
         </div>
         <div className="proj-card-shot">
           {project.image ? (
@@ -256,12 +346,16 @@ function ProjectCardInner({ project }: { project: Project }) {
           <BadgeIcon aria-hidden="true" />
           {project.badgeLeft.label}
         </span>
-        <span className="proj-badge proj-badge-right mono">{project.badgeRight}</span>
+        <span className="proj-badge proj-badge-right mono">
+          {project.badgeRight}
+        </span>
       </div>
 
       <h3 className="proj-card-title">
         {project.title}
-        {project.meta && <span className="proj-card-meta"> · {project.meta}</span>}
+        {project.meta && (
+          <span className="proj-card-meta"> · {project.meta}</span>
+        )}
       </h3>
       <p className="proj-card-desc">{project.description}</p>
 
@@ -283,11 +377,18 @@ function ProjectCardInner({ project }: { project: Project }) {
       </div>
 
       {project.link ? (
-        <a className="proj-card-link mono" href={project.link} target="_blank" rel="noopener noreferrer">
+        <a
+          className="proj-card-link mono"
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {project.linkLabel} ↗
         </a>
       ) : (
-        <span className="proj-card-link proj-card-link-static mono">{project.linkLabel}</span>
+        <span className="proj-card-link proj-card-link-static mono">
+          {project.linkLabel}
+        </span>
       )}
     </>
   );
@@ -315,7 +416,11 @@ function TiltWrap({
       onPointerLeave={tilt.onPointerLeave}
     >
       {children}
-      <motion.div className="tilt-glare" style={{ background: glareBackground }} aria-hidden="true" />
+      <motion.div
+        className="tilt-glare"
+        style={{ background: glareBackground }}
+        aria-hidden="true"
+      />
     </motion.div>
   );
 }
@@ -403,7 +508,9 @@ export default function Projects() {
                   x: reducedMotion ? 0 : `${diff * 78}%`,
                   scale: isActive ? 1 : 0.86,
                   opacity: isActive ? 1 : 0.45,
-                  filter: isActive ? "blur(0px) saturate(1)" : "blur(1.5px) saturate(0.7)",
+                  filter: isActive
+                    ? "blur(0px) saturate(1)"
+                    : "blur(1.5px) saturate(0.7)",
                 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 drag={isActive ? "x" : false}
@@ -414,7 +521,11 @@ export default function Projects() {
                 aria-hidden={!isActive}
                 role={isActive ? undefined : "presentation"}
                 aria-roledescription={isActive ? "slide" : undefined}
-                aria-label={isActive ? `${active + 1} of ${PROJECTS.length}: ${p.title}` : undefined}
+                aria-label={
+                  isActive
+                    ? `${active + 1} of ${PROJECTS.length}: ${p.title}`
+                    : undefined
+                }
               >
                 {isActive ? (
                   <TiltWrap className="proj-card" maxTilt={3}>
