@@ -128,7 +128,7 @@ const PROJECTS: Project[] = [
     image: null,
   },
   {
-    title: "Seno.io",
+    title: "Chozhix HRMS",
     badgeLeft: { icon: FaPeopleGroup, label: "HRMS & SaaS" },
     badgeRight: "Personal Project",
     description:
@@ -146,7 +146,7 @@ const PROJECTS: Project[] = [
       "Vercel",
       "Render",
     ],
-    link: "https://seno-io.vercel.app/login",
+    link: "https://chozhix-hrms.vercel.app/",
     linkLabel: "Live Project",
     image: "/projects/seno.png",
   },
